@@ -1,0 +1,51 @@
+#: import colormap kivy.utils.colormap
+
+<MainGUI>
+    # background
+    canvas.before:
+        Color:
+            rgba: colormap["white"]
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    # main frame
+    canvas:
+        Color:
+            rgba: colormap[app.COLOR]
+
+        RoundedRectangle:
+            pos: (self.pos[0] + 10, self.pos[1] + 10)
+            size: (self.size[0] - 20, self.size[1] - 20)
+            radius: (20,20), (20,20), (20,20), (20,20)
+
+    FloatLayout:
+        size: app.SIZE
+
+        Label:
+            id: title_box
+            font_size: '20pt'
+            size_hint: (.2, 1)
+            text: "TITLE BOX"
+            pos: app.TITLE_POS
+
+        Label:
+            id: setting_box
+            font_size: '20pt'
+            size_hint: (.2, .5)
+            text: "SETTING BOX"
+            pos: app.SETTING_POS
+
+        Label:
+            id: status_box
+            font_size: '20pt'
+            size_hint: (.25, .25)
+            text: "STATUS BOX"
+            pos: app.STATUS_POS
+
+        Label:
+            id: activity_pos
+            font_size: '20pt'
+            size_hint: (.25, .25)
+            text: "ACTIVITY BOX"
+            pos: app.ACTIVITY_POS

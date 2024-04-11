@@ -1,0 +1,35 @@
+This is the plan for what the gui will look like
+formatted in a kivy-esc manner.
+
+This is my current plan, but it is subject to change.
+it was mostly so i had a goal in trying to learn kivy.
+
+
+    settings_box
+        positive message [select file]
+        positive message delay [input]
+        negative message [select file]
+        negative message delay [input]
+
+        phone docked?       [check]
+
+    title_box
+        LOGO ??? (perhaps)
+        OUR GUYS NAME
+
+    status_box
+        ON/OFF BUTTON
+
+    web_activity
+        WEB ACTIVITY
+            BAD WEBSITES
+                - WEBSITE ENTRY     remove button
+                - add
+            GOOD WEBSITES
+                - WEBSITE ENTRY     remove button
+                - add
+
+
+NOTES:
+recognized color words -- easier than doing the rgba value
+https://www.w3.org/TR/SVG11/types.html#ColorKeywords
