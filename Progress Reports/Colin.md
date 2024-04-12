@@ -9,3 +9,6 @@
     a open source handmade library translated from adafruit to python is available
     ordered 2 inch LCD display to come in 24.04.16 at 15.37$
     link to display - https://a.co/d/5SvubD3 
+    Researched MicroBit pinout diagram
+    ordered breakout board for MicroBit
+    link to breakout board - https://a.co/d/3zJhO24 10$
