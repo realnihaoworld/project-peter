@@ -12,3 +12,4 @@
     Researched MicroBit pinout diagram
     ordered breakout board for MicroBit
     link to breakout board - https://a.co/d/3zJhO24 10$
+    LCD documentation - https://www.waveshare.com/wiki/2inch_LCD_Module
