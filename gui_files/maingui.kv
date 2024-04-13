@@ -1,51 +1,104 @@
 #: import colormap kivy.utils.colormap
+# position goes to bottom left corner
 
 <MainGUI>
     # background
+    # box is 800x600 pixels
     canvas.before:
         Color:
-            rgba: colormap["white"]
+            rgba: app.COLOR
         Rectangle:
             size: self.size
             pos: self.pos
 
-    # main frame
-    canvas:
-        Color:
-            rgba: colormap[app.COLOR]
+<TitleBox>
+    Label:
+        id: title_frame
+        text: "TITLE OF PROJECT"
+        pos: root.size[0] * 1 / 100, root.size[1] * 83 / 100
+        size: root.size[0] * 60 / 100, root.size[1] * 16 / 100
 
-        RoundedRectangle:
-            pos: (self.pos[0] + 10, self.pos[1] + 10)
-            size: (self.size[0] - 20, self.size[1] - 20)
-            radius: (20,20), (20,20), (20,20), (20,20)
+        halign: "center"
+        valign: "center"
+        color: "black"
+        bold: True
+        text_size: self.size
+        font_size: self.size[0] / 10 # number of letters in phrase
 
-    FloatLayout:
-        size: app.SIZE
+        canvas.before:
+            Color:
+                rgba: app.ACCENT_COLOR
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: (20, 20), (10, 10), (20, 20), (10, 10)
 
-        Label:
-            id: title_box
-            font_size: '20pt'
-            size_hint: (.2, 1)
-            text: "TITLE BOX"
-            pos: app.TITLE_POS
+<SettingBox>
+    Label:
+        id: setting_frame
+        text: "Settings"
+        pos: root.size[0] * 62 / 100, root.size[1] * 19 / 100
+        size: root.size[0] * 37 / 100, root.size[1] * 80 / 100
 
-        Label:
-            id: setting_box
-            font_size: '20pt'
-            size_hint: (.2, .5)
-            text: "SETTING BOX"
-            pos: app.SETTING_POS
+        halign: "center"
+        valign: "top"
 
-        Label:
-            id: status_box
-            font_size: '20pt'
-            size_hint: (.25, .25)
-            text: "STATUS BOX"
-            pos: app.STATUS_POS
+        color: "black"
+        padding_y: 10
+        underline: True
+        text_size: self.size
+        font_size: self.size[0] / 15 # number of letters in phrase
 
-        Label:
-            id: activity_pos
-            font_size: '20pt'
-            size_hint: (.25, .25)
-            text: "ACTIVITY BOX"
-            pos: app.ACTIVITY_POS
+        canvas.before:
+            Color:
+                rgba: app.ACCENT_COLOR
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: (10,10), (10,10), (10,10), (10,10)
+
+<WebBox>
+    # Webactivity Box
+    Label:
+        id: web_frame
+        text: "Website List"
+        pos: root.size[0] * 1 / 100, root.size[1] * 1 / 100
+        size: root.size[0] * 60 / 100, root.size[1] * 81 / 100
+
+        halign: "center"
+        valign: "top"
+
+        color: "black"
+        padding_y: 10
+        underline: True
+        text_size: self.size
+        font_size: self.size[0] / 20 # number of letters in phrase
+
+        canvas.before:
+            Color:
+                rgba: app.ACCENT_COLOR
+
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: (10,10), (10,10), (10,10), (10,10)
+
+<StatusBox>
+    Label:
+        id: status_frame
+        text: "STATUS: {status}"
+        pos: root.size[0] * 62 / 100, root.size[1] * 1 / 100
+        size: root.size[0] * 37 / 100, root.size[1] * 17 / 100
+
+        color: "black"
+        bold: True
+
+        font_size: self.size[0] / 10 # number of letters in phrase
+
+        canvas.before:
+            Color:
+                rgba: app.status_color
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: (10,10), (10,10), (10,10), (10,10)

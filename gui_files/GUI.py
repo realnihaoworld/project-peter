@@ -1,11 +1,22 @@
 # Kivy genuinely require this many different import statements. I agree
 # that it is confusing. -- Lily Williams
-
 import kivy
+import constants
+
+# for window size/to lock resizability
+from kivy.core.window import Window
+from kivy.config import Config
+
+# WILL NOT CHANGE RESIZE OPTION IF ITS NOT HERE AND ALSO IN THE MAIN APP
+kivy.config.Config.set('graphics', 'resizable', constants.RESIZEABLE)
+Config.write()
+
+# All other Kivy imports.
 from kivy.app import App
 from kivy.lang import Builder                           # this allows to import .kv file
-from kivy.uix.widget import Widget                      # allows .kv file to be displayed
+from kivy.uix.widget import Widget
 from kivy.utils import colormap                         # dict of colors with names
+from kivy.uix.floatlayout import FloatLayout
 
 from kivy.properties import (ObjectProperty,            # in order to pass vars between .py
                              ListProperty,              # and .kv file, they have to be property objects
@@ -13,17 +24,17 @@ from kivy.properties import (ObjectProperty,            # in order to pass vars 
                              ReferenceListProperty,
                              StringProperty)
 
-from kivy.uix.floatlayout import FloatLayout            # this is the style of layout
-
 # Imports for individual widget types to be used
-from kivy.uix.button import Button                      # Kivy buttons
+from kivy.uix.button import Button
 from kivy.graphics import Rectangle, Color              # this is for the canvas object, which operates
                                                         # as a graphic background.
 
-import constants                                        # py fule for constants
 
+##########################################################################
+# Widget Classes
+##########################################################################
 
-class MainGUI(Widget):
+class MainGUI(FloatLayout):
     """
     has to be stated as a class in the main file.
 
@@ -31,30 +42,53 @@ class MainGUI(Widget):
             consistent.
     """
     pass
+class TitleBox(Widget):
+    pass
+
+class SettingBox(Widget):
+    pass
+
+class WebBox(Widget):
+    pass
+
+class StatusBox(Widget):
+    pass
+
 
 
 ##########################################################################
-# MAIN GUI
+# Main Applicaiton
 ##########################################################################
 
-
-class MainApp(App):
+class ProjectPeterApp(App):
     # establishes constants as property objects for kivy.
     SIZE = ListProperty(constants.SIZE)
-    SETTING_POS = ListProperty(constants.SETTING_POS)
-    TITLE_POS = ListProperty(constants.TITLE_POS)
-    STATUS_POS = ListProperty(constants.STATUS_POS)
-    ACTIVITY_POS = ListProperty(constants.ACTIVITY_POS)
     COLOR = StringProperty(constants.COLOR)
+    ACCENT_COLOR = ListProperty(constants.ACCENT_COLOR)
+
+    status_color = ListProperty(constants.STANDBY_COLOR)
 
     def build(self):
+        # window setup, options in constants.py
+        Window.size = constants.SIZE
+        kivy.config.Config.set('graphics', 'resizable', constants.RESIZEABLE)
+        Config.write()
 
-        # layout formatting
+        # establishing layout + frame
         layout = FloatLayout(size=constants.SIZE)
+        # background in maingui.kv file
+        bg = MainGUI()
+        set = SettingBox()
+        web = WebBox()
+        title = TitleBox()
+        stat = StatusBox()
 
-        m = MainGUI()
-
-        layout.add_widget(m)
+        # adding widgets to layout
+        layout.add_widget(bg)
+        layout.add_widget(set)
+        layout.add_widget(web)
+        layout.add_widget(title)
+        layout.add_widget(stat)
 
         return layout
 
@@ -63,5 +97,5 @@ class MainApp(App):
 # otherwise the constants don't exist as objects yet to be used.
 mainGUI_style = Builder.load_file("maingui.kv")
 
-g = MainApp()
+g = ProjectPeterApp()
 g.run()
