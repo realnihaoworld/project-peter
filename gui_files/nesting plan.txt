@@ -33,3 +33,5 @@ it was mostly so i had a goal in trying to learn kivy.
 NOTES:
 recognized color words -- easier than doing the rgba value
 https://www.w3.org/TR/SVG11/types.html#ColorKeywords
+
+https://www.tutorialspoint.com/kivy/kivy-label.htm

@@ -47,7 +47,7 @@
         padding_y: 10
         underline: True
         text_size: self.size
-        font_size: self.size[0] / 15 # number of letters in phrase
+        font_size: self.size[0] / 10 # number of letters in phrase
 
         canvas.before:
             Color:
@@ -57,10 +57,86 @@
                 size: self.size
                 radius: (10,10), (10,10), (10,10), (10,10)
 
+<SettingButtons>
+    Button:
+        pos: root.size[0] * 68 / 100, root.size[1] * 78 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
+
+        font_size: self.size[0] / 10
+        text_size: self.size
+        halign: "center"
+        valign: "center"
+
+        text: "Positive Message"
+        color: "white"
+
+    Label:
+        pos: root.size[0] * 65 / 100, root.size[1] * 68 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
+
+        font_size: self.size[0] / 12
+        text_size: self.size
+        halign: "center"
+        valign: "center"
+
+        text: "Positive Message Delay:"
+        color: "black"
+
+    TextInput:
+        pos: root.size[0] * 89 / 100, root.size[1] * 69 / 100
+        size: root.size[0] * 7 / 100, root.size[1] * 5 / 100
+
+    Button:
+        pos: root.size[0] * 68 / 100, root.size[1] * 52 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
+
+        font_size: self.size[0] / 10
+        text_size: self.size
+        halign: "center"
+        valign: "center"
+
+        text: "Negative Message"
+        color: "white"
+
+    Label:
+        pos: root.size[0] * 65 / 100, root.size[1] * 42 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
+
+        font_size: self.size[0] / 12
+        text_size: self.size
+        halign: "center"
+        valign: "center"
+
+        text: "Negative Message Delay:"
+        color: "black"
+
+    TextInput:
+        pos: root.size[0] * 89 / 100, root.size[1] * 43 / 100
+        size: root.size[0] * 7 / 100, root.size[1] * 5 / 100
+
+    Button:
+        # color will change when clicked
+        pos: root.size[0] * 68 / 100, root.size[1] * 27 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
+
+        font_size: self.size[0] / 10
+        text_size: self.size
+        halign: "center"
+        valign: "center"
+
+        text: "ON/OFF"
+        color: "white"
+        on_press: app.dock_toggle()
+
+
+
 <WebBox>
     # Webactivity Box
     Label:
-        id: web_frame
+        id: web_frame    TextInput:
+        pos: root.size[0] * 89 / 100, root.size[1] * 71 / 100
+        size: root.size[0] * 7 / 100, root.size[1] * 5 / 100
+
         text: "Website List"
         pos: root.size[0] * 1 / 100, root.size[1] * 1 / 100
         size: root.size[0] * 60 / 100, root.size[1] * 81 / 100

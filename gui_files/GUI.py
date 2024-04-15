@@ -54,6 +54,8 @@ class WebBox(Widget):
 class StatusBox(Widget):
     pass
 
+class SettingButtons(Widget):
+    pass
 
 
 ##########################################################################
@@ -83,14 +85,24 @@ class ProjectPeterApp(App):
         title = TitleBox()
         stat = StatusBox()
 
+        # adding interactivity
+        setting_commands = SettingButtons()
+
         # adding widgets to layout
         layout.add_widget(bg)
         layout.add_widget(set)
         layout.add_widget(web)
         layout.add_widget(title)
         layout.add_widget(stat)
+        layout.add_widget(setting_commands)
 
         return layout
+
+    def dock_toggle(self):
+        if self.status_color == constants.ON_COLOR:
+            self.status_color = constants.OFF_COLOR
+        else:
+            self.status_color = constants.ON_COLOR
 
 
 # loading the style from the main file. It is done after the fact because
