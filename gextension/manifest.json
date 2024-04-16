@@ -1,0 +1,14 @@
+{
+    "name": "Current URL",
+    "version": "1.0.0",
+    "description": "fetches current url of webpage",
+    "manifest_version": 3,
+    "author": "Danison Zhang",
+    "permissions": [
+        "tabs"
+    ],
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Current URL"
+    }
+}
