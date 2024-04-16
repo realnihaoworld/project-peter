@@ -1,9 +1,7 @@
 www.canvas.latech.edu
-google.com
 tumblr.com
-instagram.com
-facebook.com
-instagram.com
-facebook.com
-instagram.com
-facebook.com
+github.com
+duckduckgo.com
+www.theendpoem.com
+minecraft.net
+www.wikipedia.org

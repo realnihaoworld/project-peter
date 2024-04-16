@@ -1,82 +1,75 @@
-# Kivy genuinely require this many different import statements. I agree
-# that it is confusing. -- Lily Williams
-import kivy
-import constants
-import os.path
+"""
+Description: Main file to run for GUI
+"""
 
-# for window size/to lock resizability
-from kivy.core.window import Window
-from kivy.config import Config
-
-# WILL NOT CHANGE RESIZE OPTION IF ITS NOT HERE AND ALSO IN THE MAIN APP
-kivy.config.Config.set('graphics', 'resizable', constants.RESIZEABLE)
-Config.write()
-
-# All other Kivy imports.
-from kivy.app import App
-from kivy.lang import Builder                           # this allows to import .kv file
-from kivy.uix.widget import Widget
-from kivy.utils import colormap                         # dict of colors with names
-from kivy.uix.floatlayout import FloatLayout
-
-from kivy.properties import (ObjectProperty,            # in order to pass vars between .py
-                             ListProperty,              # and .kv file, they have to be property objects
-                             NumericProperty,
-                             ReferenceListProperty,
-                             StringProperty)
-
-# Imports for individual widget types to be used
-from kivy.uix.button import Button
-from kivy.uix.label import Label
-from kivy.graphics import Rectangle, Color              # this is for the canvas object, which operates
-                                                        # as a graphic background.
-
+# the imports are all in a seperate file to declutter
+from imports import *
 
 ##########################################################################
 # Widget Classes
 ##########################################################################
 
+# All of the custom widgets/visuals have to be stated as classes
+# The only things they contain are widget specific functions and variables.
+
 class MainGUI(FloatLayout):
     """
-    has to be stated as a class in the main file.
-
-    Note: Kivy has a specific naming scheme for files/classes, that is why the capitalization is not
-            consistent.
+    main background
     """
-    pass
+
 class TitleBox(Widget):
-    pass
+    """
+    rounded box that contains title
+    """
 
 class SettingBox(Widget):
-    pass
+    """
+    left box containing setting, just background.
+    """
+
+class SettingButtons(Widget):
+    """
+    buttons/inputs inside settings box
+    """
 
 class WebBox(Widget):
-    # i am aware that this is repetetive, but I was having trouble getting it
-    # to work otherwise
+    """
+    main box that contains list of good/bad websites. lists are pulled
+    from websites.txt files
+    """
 
+    # i am aware that this is repetetive, it will be better later
     txt = open(os.path.join("websites", "good_websites.txt")).readlines()
     good_web = ""
     for website in txt:
-        good_web += f"{website}"
+        print(website[0:4])
+        if website[:4] == "www.":
+            good_web += f"{website[4:]}"
+        else:
+            good_web += f"{website}"
 
     txt = open(os.path.join("websites", "bad_websites.txt")).readlines()
     bad_web = ""
     for website in txt:
-        bad_web += f"{website}"
+        print(website[0:4])
+        if website[:4] == "www.":
+            bad_web += f"{website[4:]}"
+        else:
+            bad_web += f"{website}"
 
 
 class StatusBox(Widget):
-    pass
-
-class SettingButtons(Widget):
-    pass
+    """
+    bottom box that displays status.
+    launches in standby
+    """
 
 
 ##########################################################################
 # Main Applicaiton
 ##########################################################################
 
-class ProjectPeterApp(App):
+class ProtoypeGUIApp(App):
     # establishes constants as property objects for kivy.
     SIZE = ListProperty(constants.SIZE)
     COLOR = StringProperty(constants.COLOR)
@@ -87,8 +80,6 @@ class ProjectPeterApp(App):
     def build(self):
         # window setup, options in constants.py
         Window.size = constants.SIZE
-        kivy.config.Config.set('graphics', 'resizable', constants.RESIZEABLE)
-        Config.write()
 
         # establishing layout + frame
         layout = FloatLayout(size=constants.SIZE)
@@ -99,7 +90,7 @@ class ProjectPeterApp(App):
         title = TitleBox()
         stat = StatusBox()
 
-        # adding interactivity
+        # adding setting buttons/inputs
         setting_commands = SettingButtons()
 
         # adding widgets to layout
@@ -125,5 +116,5 @@ class ProjectPeterApp(App):
 # otherwise the constants don't exist as objects yet to be used.
 mainGUI_style = Builder.load_file("maingui.kv")
 
-g = ProjectPeterApp()
+g = ProtoypeGUIApp()
 g.run()

@@ -1,5 +1,4 @@
 #: import colormap kivy.utils.colormap
-#: import ON_COLOR constants.ON_COLOR
 
 <MainGUI>
     # background
@@ -14,7 +13,7 @@
 <TitleBox>
     Label:
         id: title_frame
-        text: "PROBOTIVITY"
+        text: "prototype gui"
         pos: root.size[0] * 1 / 100, root.size[1] * 83 / 100
         size: root.size[0] * 60 / 100, root.size[1] * 16 / 100
 
@@ -23,7 +22,7 @@
         color: "black"
         bold: True
         text_size: self.size
-        font_size: self.size[0] / 10 # number of letters in phrase
+        font_size: self.size[0] / 10
 
         canvas.before:
             Color:
@@ -156,7 +155,7 @@
 
     Label:
         text: "good sites:"
-        pos: root.size[0] * 10 / 100, root.size[1] * 63 / 100
+        pos: root.size[0] * 8 / 100, root.size[1] * 63 / 100
         font_size: root.size[0] / 40
         underline: True
         bold: True
@@ -164,7 +163,7 @@
 
     Label:
         text: "bad sites:"
-        pos: root.size[0] * 35 / 100, root.size[1] * 63 / 100
+        pos: root.size[0] * 37 / 100, root.size[1] * 63 / 100
         font_size: root.size[0] / 40
         underline: True
         bold: True
