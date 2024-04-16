@@ -2,6 +2,7 @@
 # that it is confusing. -- Lily Williams
 import kivy
 import constants
+import os.path
 
 # for window size/to lock resizability
 from kivy.core.window import Window
@@ -26,6 +27,7 @@ from kivy.properties import (ObjectProperty,            # in order to pass vars 
 
 # Imports for individual widget types to be used
 from kivy.uix.button import Button
+from kivy.uix.label import Label
 from kivy.graphics import Rectangle, Color              # this is for the canvas object, which operates
                                                         # as a graphic background.
 
@@ -49,7 +51,19 @@ class SettingBox(Widget):
     pass
 
 class WebBox(Widget):
-    pass
+    # i am aware that this is repetetive, but I was having trouble getting it
+    # to work otherwise
+
+    txt = open(os.path.join("websites", "good_websites.txt")).readlines()
+    good_web = ""
+    for website in txt:
+        good_web += f"{website}"
+
+    txt = open(os.path.join("websites", "bad_websites.txt")).readlines()
+    bad_web = ""
+    for website in txt:
+        bad_web += f"{website}"
+
 
 class StatusBox(Widget):
     pass
@@ -67,8 +81,8 @@ class ProjectPeterApp(App):
     SIZE = ListProperty(constants.SIZE)
     COLOR = StringProperty(constants.COLOR)
     ACCENT_COLOR = ListProperty(constants.ACCENT_COLOR)
-
     status_color = ListProperty(constants.STANDBY_COLOR)
+    status = StringProperty("STANDBY")
 
     def build(self):
         # window setup, options in constants.py
@@ -101,8 +115,10 @@ class ProjectPeterApp(App):
     def dock_toggle(self):
         if self.status_color == constants.ON_COLOR:
             self.status_color = constants.OFF_COLOR
+            self.status = "OFF"
         else:
             self.status_color = constants.ON_COLOR
+            self.status = "ON"
 
 
 # loading the style from the main file. It is done after the fact because

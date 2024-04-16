@@ -1,5 +1,5 @@
 #: import colormap kivy.utils.colormap
-# position goes to bottom left corner
+#: import ON_COLOR constants.ON_COLOR
 
 <MainGUI>
     # background
@@ -14,7 +14,7 @@
 <TitleBox>
     Label:
         id: title_frame
-        text: "TITLE OF PROJECT"
+        text: "PROBOTIVITY"
         pos: root.size[0] * 1 / 100, root.size[1] * 83 / 100
         size: root.size[0] * 60 / 100, root.size[1] * 16 / 100
 
@@ -128,15 +128,10 @@
         color: "white"
         on_press: app.dock_toggle()
 
-
-
 <WebBox>
     # Webactivity Box
     Label:
-        id: web_frame    TextInput:
-        pos: root.size[0] * 89 / 100, root.size[1] * 71 / 100
-        size: root.size[0] * 7 / 100, root.size[1] * 5 / 100
-
+        id: web_frame
         text: "Website List"
         pos: root.size[0] * 1 / 100, root.size[1] * 1 / 100
         size: root.size[0] * 60 / 100, root.size[1] * 81 / 100
@@ -159,10 +154,47 @@
                 size: self.size
                 radius: (10,10), (10,10), (10,10), (10,10)
 
+    Label:
+        text: "good sites:"
+        pos: root.size[0] * 10 / 100, root.size[1] * 63 / 100
+        font_size: root.size[0] / 40
+        underline: True
+        bold: True
+        color: "green"
+
+    Label:
+        text: "bad sites:"
+        pos: root.size[0] * 35 / 100, root.size[1] * 63 / 100
+        font_size: root.size[0] / 40
+        underline: True
+        bold: True
+        color: "red"
+
+    Label:
+        text: root.good_web
+        pos: root.size[0] * 5 / 100, root.size[1] * 5 / 100
+        size: root.size[0] * 50 / 100, root.size[1] * 60 / 100
+        font_size: root.size[0] / 40
+        valign: "top"
+        halign: "left"
+        text_size: self.size
+        color: "green"
+
+    Label:
+        text: root.bad_web
+        pos: root.size[0] * 35 / 100, root.size[1] * 5 / 100
+        size: root.size[0] * 50 / 100, root.size[1] * 60 / 100
+        font_size: root.size[0] / 40
+        valign: "top"
+        halign: "left"
+        text_size: self.size
+        color: "red"
+
+
 <StatusBox>
     Label:
         id: status_frame
-        text: "STATUS: {status}"
+        text: "STATUS: " + app.status
         pos: root.size[0] * 62 / 100, root.size[1] * 1 / 100
         size: root.size[0] * 37 / 100, root.size[1] * 17 / 100
 

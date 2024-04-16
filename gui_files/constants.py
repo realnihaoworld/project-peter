@@ -14,9 +14,9 @@ TITLE_POS = (25, 475)
 STATUS_POS = (10, 10)
 
 # status colors
-ON_COLOR = [0, 255, 0, 0.8]
-OFF_COLOR = [255, 0, 0, 0.8]
-STANDBY_COLOR = [0, 0, 225, 0.8]
+ON_COLOR = [0, 255, 0, 1]
+OFF_COLOR = [255, 0, 0, 1]
+STANDBY_COLOR = [0, 0, 225, 1]
 
 # web activity
 ACTIVITY_POS = (50, 50)
