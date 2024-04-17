@@ -23,3 +23,4 @@ ACTIVITY_POS = (50, 50)
 
 
 # adding comment for test commit
+# everything is going well
