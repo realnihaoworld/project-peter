@@ -21,3 +21,5 @@ STANDBY_COLOR = [0, 0, 225, 1]
 # web activity
 ACTIVITY_POS = (50, 50)
 
+
+# adding comment for test commit
