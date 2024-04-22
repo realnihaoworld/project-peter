@@ -19,3 +19,9 @@ from kivy.properties import (ListProperty,            # in order to pass vars be
 
 # Imports for individual widget types to be used
 from kivy.graphics import Rectangle, Color
+
+
+# playsound
+from playsound import *
+
+# TODO: import library to change sound device.
