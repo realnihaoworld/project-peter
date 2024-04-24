@@ -34,6 +34,7 @@ class WebBox(Widget):
     """
 
     # TODO: MAKE IT A TXT INPUT THAT GETS WRITTEN
+    # TODO: MAKE TIME INTERVAL WORKS
 
     # i am aware that this is repetetive, it will be better later
     txt = open(os.path.join("websites", "good_websites.txt")).readlines()

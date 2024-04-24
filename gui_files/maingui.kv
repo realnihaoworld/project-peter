@@ -69,6 +69,8 @@
         text: "Positive Message"
         color: "white"
 
+        on_press: app.set_good_sound()
+
     Label:
         pos: root.size[0] * 65 / 100, root.size[1] * 68 / 100
         size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
@@ -96,6 +98,8 @@
 
         text: "Negative Message"
         color: "white"
+
+        on_press: app.set_bad_sound()
 
     Label:
         pos: root.size[0] * 65 / 100, root.size[1] * 42 / 100
