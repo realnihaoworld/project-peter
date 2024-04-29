@@ -20,7 +20,7 @@ from kivy.clock import Clock
 
 # Imports for individual widget types to be used
 from kivy.graphics import Rectangle, Color
-
+from time import time, sleep
 
 # playsound
 from playsound import *

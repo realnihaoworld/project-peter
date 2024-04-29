@@ -1,3 +1,5 @@
+DEBUG = False
+
 # frame constants
 SIZE = (800, 600)
 COLOR = [100, 100, 100, 0.5]

@@ -86,6 +86,9 @@
     TextInput:
         pos: root.size[0] * 89 / 100, root.size[1] * 69 / 100
         size: root.size[0] * 7 / 100, root.size[1] * 5 / 100
+        text: "min"
+        multiline: False
+        on_text_validate:  app.set_good_delay(self.text)
 
     Button:
         pos: root.size[0] * 68 / 100, root.size[1] * 52 / 100
@@ -116,6 +119,9 @@
     TextInput:
         pos: root.size[0] * 89 / 100, root.size[1] * 43 / 100
         size: root.size[0] * 7 / 100, root.size[1] * 5 / 100
+        text: "min"
+        on_text_validate:  app.set_bad_delay(self.text)
+        multiline: False
 
     Button:
         # color will change when clicked

@@ -33,14 +33,11 @@ class WebBox(Widget):
     from websites.txt files
     """
 
-    # TODO: MAKE IT A TXT INPUT THAT GETS WRITTEN
-    # TODO: MAKE TIME INTERVAL WORKS
-
     # i am aware that this is repetetive, it will be better later
     txt = open(os.path.join("websites", "good_websites.txt")).readlines()
     good_web = ""
     for website in txt:
-        print(website[0:4])
+        if constants.DEBUG: print((website[0:4]))
         if website[:4] == "www.":
             good_web += f"{website[4:]}"
         else:
@@ -49,7 +46,7 @@ class WebBox(Widget):
     txt = open(os.path.join("websites", "bad_websites.txt")).readlines()
     bad_web = ""
     for website in txt:
-        print(website[0:4])
+        if constants.DEBUG: print((website[0:4]))
         if website[:4] == "www.":
             bad_web += f"{website[4:]}"
         else:
