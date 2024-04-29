@@ -1,8 +1,6 @@
 """
 Description: Main file to run for GUI
 """
-import time
-
 # the imports are all in a seperate file to declutter
 from imports import *
 from widget_classes import *
@@ -21,10 +19,10 @@ class ProtoypeGUIApp(App):
     SIZE = ListProperty(constants.SIZE)
     COLOR = StringProperty(constants.COLOR)
     ACCENT_COLOR = ListProperty(constants.ACCENT_COLOR)
-    status_color = ListProperty(constants.STANDBY_COLOR)
-    status = StringProperty("STANDBY")
+    status_color = ListProperty(constants.OFF_COLOR)
 
     def build(self):
+        self.status = "OFF"
 
         # path to sound
         self.good_sound = ""
@@ -82,6 +80,7 @@ class ProtoypeGUIApp(App):
                 if self.started_on_good_website is False:
                     self.good_website_time = time()
                     self.started_on_good_website = True
+                    self.started_on_bad_website = False
 
                 time_since_stated = current_time - self.good_website_time
 
@@ -92,6 +91,8 @@ class ProtoypeGUIApp(App):
                 if self.started_on_bad_website is False:
                     self.bad_website_time = time()
                     self.started_on_bad_website = True
+                    self.started_on_good_website = False
+
 
                 time_since_stated = current_time - self.bad_website_time
 

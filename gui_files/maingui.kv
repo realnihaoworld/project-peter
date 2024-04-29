@@ -13,7 +13,7 @@
 <TitleBox>
     Label:
         id: title_frame
-        text: "prototype gui"
+        text: "Productivity Pal"
         pos: root.size[0] * 1 / 100, root.size[1] * 83 / 100
         size: root.size[0] * 60 / 100, root.size[1] * 16 / 100
 
@@ -23,6 +23,7 @@
         bold: True
         text_size: self.size
         font_size: self.size[0] / 10
+        font_name: "montserrat"
 
         canvas.before:
             Color:
@@ -43,10 +44,12 @@
         valign: "top"
 
         color: "black"
-        padding_y: 10
-        underline: True
+        padding_y: 20
+        bold: True
         text_size: self.size
-        font_size: self.size[0] / 10 # number of letters in phrase
+        font_size: self.size[0] / 9 # number of letters in phrase
+        font_name: "montserrat"
+
 
         canvas.before:
             Color:
@@ -62,6 +65,7 @@
         size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
 
         font_size: self.size[0] / 10
+        font_name: "montserrat"
         text_size: self.size
         halign: "center"
         valign: "center"
@@ -72,11 +76,12 @@
         on_press: app.set_good_sound()
 
     Label:
-        pos: root.size[0] * 65 / 100, root.size[1] * 68 / 100
-        size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
+        pos: root.size[0] * 65 / 100, root.size[1] * 64 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 15 / 100
 
         font_size: self.size[0] / 12
         text_size: self.size
+        font_name: "montserrat"
         halign: "center"
         valign: "center"
 
@@ -84,8 +89,8 @@
         color: "black"
 
     TextInput:
-        pos: root.size[0] * 89 / 100, root.size[1] * 69 / 100
-        size: root.size[0] * 7 / 100, root.size[1] * 5 / 100
+        pos: root.size[0] * 91 / 100, root.size[1] * 68 / 100
+        size: root.size[0] * 5 / 100, root.size[1] * 5 / 100
         text: "min"
         multiline: False
         on_text_validate:  app.set_good_delay(self.text)
@@ -96,6 +101,8 @@
 
         font_size: self.size[0] / 10
         text_size: self.size
+        font_name: "montserrat"
+
         halign: "center"
         valign: "center"
 
@@ -110,6 +117,8 @@
 
         font_size: self.size[0] / 12
         text_size: self.size
+        font_name: "montserrat"
+
         halign: "center"
         valign: "center"
 
@@ -117,8 +126,8 @@
         color: "black"
 
     TextInput:
-        pos: root.size[0] * 89 / 100, root.size[1] * 43 / 100
-        size: root.size[0] * 7 / 100, root.size[1] * 5 / 100
+        pos: root.size[0] * 91 / 100, root.size[1] * 43 / 100
+        size: root.size[0] * 5 / 100, root.size[1] * 5 / 100
         text: "min"
         on_text_validate:  app.set_bad_delay(self.text)
         multiline: False
@@ -130,6 +139,8 @@
 
         font_size: self.size[0] / 10
         text_size: self.size
+        font_name: "montserrat"
+
         halign: "center"
         valign: "center"
 
@@ -145,14 +156,18 @@
         pos: root.size[0] * 1 / 100, root.size[1] * 1 / 100
         size: root.size[0] * 60 / 100, root.size[1] * 81 / 100
 
-        halign: "center"
+        halign: "left"
         valign: "top"
 
         color: "black"
-        padding_y: 10
-        underline: True
+        padding_y: 15
+        padding_x: 30
+        bold: True
+
         text_size: self.size
-        font_size: self.size[0] / 20 # number of letters in phrase
+        font_size: self.size[0] / 15 # number of letters in phrase
+        font_name: "montserrat"
+
 
         canvas.before:
             Color:
@@ -164,40 +179,46 @@
                 radius: (10,10), (10,10), (10,10), (10,10)
 
     Label:
-        text: "good sites:"
+        text: "Good Sites:"
         pos: root.size[0] * 8 / 100, root.size[1] * 63 / 100
-        font_size: root.size[0] / 40
-        underline: True
+        font_size: root.size[0] / 35
+        font_name: "montserrat"
+
         bold: True
-        color: "green"
+        color: colormap["darkgreen"]
 
     Label:
-        text: "bad sites:"
+        text: "Bad Sites:"
         pos: root.size[0] * 37 / 100, root.size[1] * 63 / 100
-        font_size: root.size[0] / 40
-        underline: True
+        font_size: root.size[0] / 35
+        font_name: "montserrat"
+
         bold: True
-        color: "red"
+        color: colormap["darkred"]
 
     Label:
         text: root.good_web
         pos: root.size[0] * 5 / 100, root.size[1] * 5 / 100
         size: root.size[0] * 50 / 100, root.size[1] * 60 / 100
         font_size: root.size[0] / 40
+        font_name: "montserrat"
+
         valign: "top"
         halign: "left"
         text_size: self.size
-        color: "green"
+        color: colormap["darkgreen"]
 
     Label:
         text: root.bad_web
         pos: root.size[0] * 35 / 100, root.size[1] * 5 / 100
         size: root.size[0] * 50 / 100, root.size[1] * 60 / 100
         font_size: root.size[0] / 40
+        font_name: "montserrat"
+
         valign: "top"
         halign: "left"
         text_size: self.size
-        color: "red"
+        color: colormap["darkred"]
 
 
 <StatusBox>
@@ -211,6 +232,8 @@
         bold: True
 
         font_size: self.size[0] / 10 # number of letters in phrase
+        font_name: "montserrat"
+        color: "white"
 
         canvas.before:
             Color:

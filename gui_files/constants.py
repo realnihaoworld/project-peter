@@ -1,9 +1,14 @@
+from kivy.utils import colormap
+from random import randint
+
 DEBUG = False
+
+color_options = ["steelblue","sienna","thistle","olivedrab"]
 
 # frame constants
 SIZE = (800, 600)
-COLOR = [100, 100, 100, 0.5]
-ACCENT_COLOR = [74, 91, 255, 0.68]
+COLOR = colormap[color_options[randint(0,3)]]
+ACCENT_COLOR = colormap["snow"]
 RESIZEABLE = True
 
 # setting box
@@ -16,9 +21,8 @@ TITLE_POS = (25, 475)
 STATUS_POS = (10, 10)
 
 # status colors
-ON_COLOR = [0, 255, 0, 1]
-OFF_COLOR = [255, 0, 0, 1]
-STANDBY_COLOR = [0, 0, 225, 1]
+ON_COLOR = colormap["darkgreen"]
+OFF_COLOR = colormap["darkred"]
 
 # web activity
 ACTIVITY_POS = (50, 50)
