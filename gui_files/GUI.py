@@ -1,6 +1,12 @@
 """
-Description: Main file to run for GUI
+Layout and build of GUI
+
+NOTE:
+    If you are adding stuff to do after you've been on a good or negative site,
+    add it to the "good_reaction" or "bad_reaction" functions.
+
 """
+
 # the imports are all in a seperate file to declutter
 from imports import *
 from widget_classes import *
@@ -13,16 +19,16 @@ WEBSITE = "tiktok.com"
 ##########################################################################
 
 
-class ProtoypeGUIApp(App):
+class ProductivityPalApp(App):
 
     # establishes constants as property objects for kivy.
     SIZE = ListProperty(constants.SIZE)
     COLOR = StringProperty(constants.COLOR)
     ACCENT_COLOR = ListProperty(constants.ACCENT_COLOR)
     status_color = ListProperty(constants.OFF_COLOR)
+    status = StringProperty("OFF")
 
     def build(self):
-        self.status = "OFF"
 
         # path to sound
         self.good_sound = ""
@@ -72,55 +78,65 @@ class ProtoypeGUIApp(App):
         """
         Acts depending on what website you are on and how long you
         have been on it
+
+        note -- dt is a required input to schedule but it is not used
         """
         current_time = time()
         if self.status == "ON":
             if (WEBSITE in WebBox.good_web):
+                # If on a productive website
 
-                if self.started_on_good_website is False:
-                    self.good_website_time = time()
+                if self.started_on_good_website is False:       # if you just got on the site
+                    self.good_website_time = time()             # gets the start time
                     self.started_on_good_website = True
                     self.started_on_bad_website = False
 
-                time_since_stated = current_time - self.good_website_time
-
-                if time_since_stated >= (self.good_delay * 60):
+                if current_time - self.good_website_time >= (self.good_delay * 60):
+                    # if you have been on the good site for the minutes indicated by the delay
                     self.good_reaction()
 
             elif WEBSITE in WebBox.bad_web:
-                if self.started_on_bad_website is False:
-                    self.bad_website_time = time()
+                # If on an unproductive website
+
+                if self.started_on_bad_website is False:       # just entered the site
+                    self.bad_website_time = time()             # start time
                     self.started_on_bad_website = True
                     self.started_on_good_website = False
 
-
-                time_since_stated = current_time - self.bad_website_time
-
-                if time_since_stated >= (self.bad_delay * 60):
+                if current_time - self.bad_website_time >= (self.bad_delay * 60):
                     self.bad_reaction()
 
             else:
+                # If you are on a site that is on neither list.
                 self.started_on_good_website = False
                 self.started_on_bad_website = False
 
-            if constants.DEBUG:
-                print(f"current time: {current_time}")
-                print(f"Time Started on Good: {self.good_website_time}")
-                print(f"started on good? {self.started_on_good_website}")
-                print(f"Good Delay: {type(self.good_delay)} : {self.good_delay * 60}")
-                print(f"IS DONE?: {time_since_stated >= (self.good_delay * 60)}")
-                print(f"Time Since Started: {type(time_since_stated)} : {time_since_stated}")
-                print("#" * 50)
-
+    # reactions after delay
     def good_reaction(self):
         if constants.DEBUG: print("GOOD REACTION")
         self.started_on_good_website = False
-        self.play_good_sound()
+
+        """
+        This function is the reaction for being on a productive website
+        for a given amount of time. any commands relating to how the
+        bot itself should react should go in here. 
+        """
+
+        playsound(self.good_sound)
+        print("good sound")
 
     def bad_reaction(self):
         if constants.DEBUG: print("BAD REACTION")
         self.started_on_bad_website = False
-        self.play_bad_sound()
+
+        """
+        This function is the reaction for being on an unproductive website
+        for a given amount of time. any commands relating to how the
+        bot itself should react should go in here. 
+        """
+
+        playsound(self.bad_sound)
+        print("bad sound")
 
     # sets delay input
     def set_good_delay(self, delay_time):
@@ -151,22 +167,25 @@ class ProtoypeGUIApp(App):
         finally:
             if constants.DEBUG: print("Bad Delay:" + str(self.bad_delay))
 
+    # sets the sound paths
     def set_good_sound(self):
+        """
+        sets the path to the sound file that is positive. there is a
+        folder in the project titled "sound" to store these.
+        """
+
         filename = askopenfilename()
         self.good_sound = filename
 
     def set_bad_sound(self):
+        """
+        sets the path to the sound file that is negative.
+        """
+
         filename = askopenfilename()
         self.bad_sound = filename
 
-    def play_bad_sound(self):
-        # playsound(self.bad_sound)
-        print("bad sound")
-
-    def play_good_sound(self):
-        # playsound(self.good_sound)
-        print("good sound")
-
+    # toggles on/off
     def dock_toggle(self):
         if self.status_color == constants.ON_COLOR:
             self.status_color = constants.OFF_COLOR
@@ -178,6 +197,3 @@ class ProtoypeGUIApp(App):
 # loading the style from the main file. It is done after the fact because
 # otherwise the constants don't exist as objects yet to be used.
 mainGUI_style = Builder.load_file("maingui.kv")
-
-g = ProtoypeGUIApp()
-g.run()

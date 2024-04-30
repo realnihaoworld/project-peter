@@ -20,10 +20,10 @@
         halign: "center"
         valign: "center"
         color: "black"
-        bold: True
+
         text_size: self.size
         font_size: self.size[0] / 10
-        font_name: "montserrat"
+        font_name: "montserrat_bold"
 
         canvas.before:
             Color:
@@ -45,10 +45,10 @@
 
         color: "black"
         padding_y: 20
-        bold: True
+
         text_size: self.size
         font_size: self.size[0] / 9 # number of letters in phrase
-        font_name: "montserrat"
+        font_name: "montserrat_bold"
 
 
         canvas.before:
@@ -112,8 +112,8 @@
         on_press: app.set_bad_sound()
 
     Label:
-        pos: root.size[0] * 65 / 100, root.size[1] * 42 / 100
-        size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
+        pos: root.size[0] * 65 / 100, root.size[1] * 38 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 15 / 100
 
         font_size: self.size[0] / 12
         text_size: self.size
@@ -162,11 +162,10 @@
         color: "black"
         padding_y: 15
         padding_x: 30
-        bold: True
 
         text_size: self.size
         font_size: self.size[0] / 15 # number of letters in phrase
-        font_name: "montserrat"
+        font_name: "montserrat_bold"
 
 
         canvas.before:
@@ -179,28 +178,30 @@
                 radius: (10,10), (10,10), (10,10), (10,10)
 
     Label:
-        text: "Good Sites:"
-        pos: root.size[0] * 8 / 100, root.size[1] * 63 / 100
-        font_size: root.size[0] / 35
-        font_name: "montserrat"
+        text: "Positive Sites:"
+        pos: root.size[0] * 8 / 100, root.size[1] * 60 / 100
+        size: root.size[0] * 10 / 100, root.size[1] * 17/ 100
 
-        bold: True
+        font_size: root.size[0] / 40
+        font_name: "montserrat_bold"
+
         color: colormap["darkgreen"]
 
     Label:
-        text: "Bad Sites:"
-        pos: root.size[0] * 37 / 100, root.size[1] * 63 / 100
-        font_size: root.size[0] / 35
-        font_name: "montserrat"
+        text: "Negative Sites:"
+        pos: root.size[0] * 37 / 100, root.size[1] * 60 / 100
+        size: root.size[0] * 10 / 100, root.size[1] * 17 / 100
 
-        bold: True
+        font_size: root.size[0] / 40
+        font_name: "montserrat_bold"
+
         color: colormap["darkred"]
 
     Label:
         text: root.good_web
         pos: root.size[0] * 5 / 100, root.size[1] * 5 / 100
         size: root.size[0] * 50 / 100, root.size[1] * 60 / 100
-        font_size: root.size[0] / 40
+        font_size: root.size[0] / 43
         font_name: "montserrat"
 
         valign: "top"
@@ -212,7 +213,7 @@
         text: root.bad_web
         pos: root.size[0] * 35 / 100, root.size[1] * 5 / 100
         size: root.size[0] * 50 / 100, root.size[1] * 60 / 100
-        font_size: root.size[0] / 40
+        font_size: root.size[0] / 43
         font_name: "montserrat"
 
         valign: "top"
@@ -232,7 +233,7 @@
         bold: True
 
         font_size: self.size[0] / 10 # number of letters in phrase
-        font_name: "montserrat"
+        font_name: "montserrat_bold"
         color: "white"
 
         canvas.before:
