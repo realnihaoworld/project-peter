@@ -12,6 +12,8 @@ NOTE:
 other note. in order to test reaction you have to set the reaction sound. i have a sound file with a default
 but its not working as a default yet.
 
+has to be using playsound 1.2.2
+
 """
 
 # the imports are all in a seperate file to declutter

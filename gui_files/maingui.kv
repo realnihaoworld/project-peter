@@ -1,4 +1,5 @@
 #: import colormap kivy.utils.colormap
+#: import join os.path.join
 
 <MainGUI>
     # background
@@ -23,7 +24,7 @@
 
         text_size: self.size
         font_size: self.size[0] / 10
-        font_name: "montserrat_bold"
+        font_name: join('fonts',"montserrat_bold")
 
         canvas.before:
             Color:
@@ -48,7 +49,7 @@
 
         text_size: self.size
         font_size: self.size[0] / 9 # number of letters in phrase
-        font_name: "montserrat_bold"
+        font_name: join('fonts',"montserrat_bold")
 
 
         canvas.before:
@@ -65,7 +66,7 @@
         size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
 
         font_size: self.size[0] / 10
-        font_name: "montserrat"
+        font_name: join('fonts',"montserrat")
         text_size: self.size
         halign: "center"
         valign: "center"
@@ -81,7 +82,7 @@
 
         font_size: self.size[0] / 12
         text_size: self.size
-        font_name: "montserrat"
+        font_name: join('fonts',"montserrat")
         halign: "center"
         valign: "center"
 
@@ -101,7 +102,7 @@
 
         font_size: self.size[0] / 10
         text_size: self.size
-        font_name: "montserrat"
+        font_name: join('fonts',"montserrat")
 
         halign: "center"
         valign: "center"
@@ -117,7 +118,7 @@
 
         font_size: self.size[0] / 12
         text_size: self.size
-        font_name: "montserrat"
+        font_name: join('fonts',"montserrat")
 
         halign: "center"
         valign: "center"
@@ -139,7 +140,7 @@
 
         font_size: self.size[0] / 10
         text_size: self.size
-        font_name: "montserrat"
+        font_name: join('fonts',"montserrat")
 
         halign: "center"
         valign: "center"
@@ -165,7 +166,7 @@
 
         text_size: self.size
         font_size: self.size[0] / 15 # number of letters in phrase
-        font_name: "montserrat_bold"
+        font_name: join('fonts',"montserrat_bold")
 
 
         canvas.before:
@@ -183,7 +184,7 @@
         size: root.size[0] * 10 / 100, root.size[1] * 17/ 100
 
         font_size: root.size[0] / 40
-        font_name: "montserrat_bold"
+        font_name: join('fonts',"montserrat_bold")
 
         color: colormap["darkgreen"]
 
@@ -193,7 +194,7 @@
         size: root.size[0] * 10 / 100, root.size[1] * 17 / 100
 
         font_size: root.size[0] / 40
-        font_name: "montserrat_bold"
+        font_name: join('fonts',"montserrat_bold")
 
         color: colormap["darkred"]
 
@@ -202,7 +203,7 @@
         pos: root.size[0] * 5 / 100, root.size[1] * 5 / 100
         size: root.size[0] * 50 / 100, root.size[1] * 60 / 100
         font_size: root.size[0] / 43
-        font_name: "montserrat"
+        font_name: join('fonts',"montserrat")
 
         valign: "top"
         halign: "left"
@@ -213,12 +214,14 @@
         text: root.bad_web
         pos: root.size[0] * 35 / 100, root.size[1] * 5 / 100
         size: root.size[0] * 50 / 100, root.size[1] * 60 / 100
+
         font_size: root.size[0] / 43
-        font_name: "montserrat"
+        font_name: join('fonts',"montserrat")
+        text_size: self.size
 
         valign: "top"
         halign: "left"
-        text_size: self.size
+
         color: colormap["darkred"]
 
 
@@ -233,7 +236,7 @@
         bold: True
 
         font_size: self.size[0] / 10 # number of letters in phrase
-        font_name: "montserrat_bold"
+        font_name: join('fonts',"montserrat_bold")
         color: "white"
 
         canvas.before:
