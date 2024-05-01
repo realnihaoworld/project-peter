@@ -5,14 +5,19 @@ NOTE:
     If you are adding stuff to do after you've been on a good or negative site,
     add it to the "good_reaction" or "bad_reaction" functions.
 
+    DANISON -- I have an empty self.website var and a get_website() function empty and set up rn but however
+    you need to do your stuff.
+
+
+other note. in order to test reaction you have to set the reaction sound. i have a sound file with a default
+but its not working as a default yet.
+
 """
 
 # the imports are all in a seperate file to declutter
 from imports import *
 from widget_classes import *
 
-# temp, this var would be from the extension
-WEBSITE = "tiktok.com"
 
 ##########################################################################
 # Main Applicaiton
@@ -30,9 +35,12 @@ class ProductivityPalApp(App):
 
     def build(self):
 
-        # path to sound
-        self.good_sound = ""
-        self.bad_sound = ""
+        # website
+        self.website = "tiktok.com" # PLACEHOLDER FOR TESTING
+
+        # path to sound. THESE DONT WORK RIGHT NOW
+        self.good_sound = os.path.join('sounds','positive_reaction_audio.wav')
+        self.bad_sound = os.path.join('sounds','negative_reaction_audio.wav')
 
         # minute delay
         self.good_delay = 1
@@ -71,8 +79,17 @@ class ProductivityPalApp(App):
 
         # schedule check event forever
         Clock.schedule_interval(self.check_website, 1)
+        Clock.schedule_interval(self.get_website, 1)
 
         return layout
+
+    def get_website(self, dt):
+        """
+        danison -- ive added this here so itll schedule to run every second or so. if you could have it set
+        self.website to a string w/ the domain. i mean if you have to do it another way i get it but thats what
+        its currently self up to work with.
+        """
+        pass
 
     def check_website(self, dt):
         """
@@ -83,7 +100,7 @@ class ProductivityPalApp(App):
         """
         current_time = time()
         if self.status == "ON":
-            if (WEBSITE in WebBox.good_web):
+            if (self.website in WebBox.good_web):
                 # If on a productive website
 
                 if self.started_on_good_website is False:       # if you just got on the site
@@ -95,7 +112,7 @@ class ProductivityPalApp(App):
                     # if you have been on the good site for the minutes indicated by the delay
                     self.good_reaction()
 
-            elif WEBSITE in WebBox.bad_web:
+            elif self.website in WebBox.bad_web:
                 # If on an unproductive website
 
                 if self.started_on_bad_website is False:       # just entered the site
