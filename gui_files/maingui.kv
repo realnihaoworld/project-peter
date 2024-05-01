@@ -1,0 +1,245 @@
+#: import colormap kivy.utils.colormap
+
+<MainGUI>
+    # background
+    # box is 800x600 pixels
+    canvas.before:
+        Color:
+            rgba: app.COLOR
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<TitleBox>
+    Label:
+        id: title_frame
+        text: "Productivity Pal"
+        pos: root.size[0] * 1 / 100, root.size[1] * 83 / 100
+        size: root.size[0] * 60 / 100, root.size[1] * 16 / 100
+
+        halign: "center"
+        valign: "center"
+        color: "black"
+
+        text_size: self.size
+        font_size: self.size[0] / 10
+        font_name: "montserrat_bold"
+
+        canvas.before:
+            Color:
+                rgba: app.ACCENT_COLOR
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: (20, 20), (10, 10), (20, 20), (10, 10)
+
+<SettingBox>
+    Label:
+        id: setting_frame
+        text: "Settings"
+        pos: root.size[0] * 62 / 100, root.size[1] * 19 / 100
+        size: root.size[0] * 37 / 100, root.size[1] * 80 / 100
+
+        halign: "center"
+        valign: "top"
+
+        color: "black"
+        padding_y: 20
+
+        text_size: self.size
+        font_size: self.size[0] / 9 # number of letters in phrase
+        font_name: "montserrat_bold"
+
+
+        canvas.before:
+            Color:
+                rgba: app.ACCENT_COLOR
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: (10,10), (10,10), (10,10), (10,10)
+
+<SettingButtons>
+    Button:
+        pos: root.size[0] * 68 / 100, root.size[1] * 78 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
+
+        font_size: self.size[0] / 10
+        font_name: "montserrat"
+        text_size: self.size
+        halign: "center"
+        valign: "center"
+
+        text: "Positive Message"
+        color: "white"
+
+        on_press: app.set_good_sound()
+
+    Label:
+        pos: root.size[0] * 65 / 100, root.size[1] * 64 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 15 / 100
+
+        font_size: self.size[0] / 12
+        text_size: self.size
+        font_name: "montserrat"
+        halign: "center"
+        valign: "center"
+
+        text: "Positive Message Delay:"
+        color: "black"
+
+    TextInput:
+        pos: root.size[0] * 91 / 100, root.size[1] * 68 / 100
+        size: root.size[0] * 5 / 100, root.size[1] * 5 / 100
+        text: "min"
+        multiline: False
+        on_text_validate:  app.set_good_delay(self.text)
+
+    Button:
+        pos: root.size[0] * 68 / 100, root.size[1] * 52 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
+
+        font_size: self.size[0] / 10
+        text_size: self.size
+        font_name: "montserrat"
+
+        halign: "center"
+        valign: "center"
+
+        text: "Negative Message"
+        color: "white"
+
+        on_press: app.set_bad_sound()
+
+    Label:
+        pos: root.size[0] * 65 / 100, root.size[1] * 38 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 15 / 100
+
+        font_size: self.size[0] / 12
+        text_size: self.size
+        font_name: "montserrat"
+
+        halign: "center"
+        valign: "center"
+
+        text: "Negative Message Delay:"
+        color: "black"
+
+    TextInput:
+        pos: root.size[0] * 91 / 100, root.size[1] * 43 / 100
+        size: root.size[0] * 5 / 100, root.size[1] * 5 / 100
+        text: "min"
+        on_text_validate:  app.set_bad_delay(self.text)
+        multiline: False
+
+    Button:
+        # color will change when clicked
+        pos: root.size[0] * 68 / 100, root.size[1] * 27 / 100
+        size: root.size[0] * 25 / 100, root.size[1] * 8 / 100
+
+        font_size: self.size[0] / 10
+        text_size: self.size
+        font_name: "montserrat"
+
+        halign: "center"
+        valign: "center"
+
+        text: "ON/OFF"
+        color: "white"
+        on_press: app.dock_toggle()
+
+<WebBox>
+    # Webactivity Box
+    Label:
+        id: web_frame
+        text: "Website List"
+        pos: root.size[0] * 1 / 100, root.size[1] * 1 / 100
+        size: root.size[0] * 60 / 100, root.size[1] * 81 / 100
+
+        halign: "left"
+        valign: "top"
+
+        color: "black"
+        padding_y: 15
+        padding_x: 30
+
+        text_size: self.size
+        font_size: self.size[0] / 15 # number of letters in phrase
+        font_name: "montserrat_bold"
+
+
+        canvas.before:
+            Color:
+                rgba: app.ACCENT_COLOR
+
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: (10,10), (10,10), (10,10), (10,10)
+
+    Label:
+        text: "Positive Sites:"
+        pos: root.size[0] * 8 / 100, root.size[1] * 60 / 100
+        size: root.size[0] * 10 / 100, root.size[1] * 17/ 100
+
+        font_size: root.size[0] / 40
+        font_name: "montserrat_bold"
+
+        color: colormap["darkgreen"]
+
+    Label:
+        text: "Negative Sites:"
+        pos: root.size[0] * 37 / 100, root.size[1] * 60 / 100
+        size: root.size[0] * 10 / 100, root.size[1] * 17 / 100
+
+        font_size: root.size[0] / 40
+        font_name: "montserrat_bold"
+
+        color: colormap["darkred"]
+
+    Label:
+        text: root.good_web
+        pos: root.size[0] * 5 / 100, root.size[1] * 5 / 100
+        size: root.size[0] * 50 / 100, root.size[1] * 60 / 100
+        font_size: root.size[0] / 43
+        font_name: "montserrat"
+
+        valign: "top"
+        halign: "left"
+        text_size: self.size
+        color: colormap["darkgreen"]
+
+    Label:
+        text: root.bad_web
+        pos: root.size[0] * 35 / 100, root.size[1] * 5 / 100
+        size: root.size[0] * 50 / 100, root.size[1] * 60 / 100
+        font_size: root.size[0] / 43
+        font_name: "montserrat"
+
+        valign: "top"
+        halign: "left"
+        text_size: self.size
+        color: colormap["darkred"]
+
+
+<StatusBox>
+    Label:
+        id: status_frame
+        text: "STATUS: " + app.status
+        pos: root.size[0] * 62 / 100, root.size[1] * 1 / 100
+        size: root.size[0] * 37 / 100, root.size[1] * 17 / 100
+
+        color: "black"
+        bold: True
+
+        font_size: self.size[0] / 10 # number of letters in phrase
+        font_name: "montserrat_bold"
+        color: "white"
+
+        canvas.before:
+            Color:
+                rgba: app.status_color
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: (10,10), (10,10), (10,10), (10,10)
