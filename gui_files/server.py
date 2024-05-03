@@ -11,8 +11,9 @@ def get_url():
     if request.method == 'POST':
         received = request.get_json()
         data = received['url']
+        print(type(received))
         print(data)
-        return {"sucess": True}
+        return received
 
 if __name__ == "__main__":
     app.run()

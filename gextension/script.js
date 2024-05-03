@@ -9,6 +9,7 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async tabs => {
         method: "POST", 
         headers: {
             "Content-Type": "application/json",
+            "Accept": "application/json"
         },
         body: JSON.stringify({"url": domain})});
     

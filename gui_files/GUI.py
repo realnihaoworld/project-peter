@@ -89,7 +89,11 @@ class ProductivityPalApp(App):
         self.website to a string w/ the domain. i mean if you have to do it another way i get it but thats what
         its currently self up to work with.
         """
-        pass
+        ctx = server.app.test_request_context('/', method='POST')
+        ctx.push()
+        url = server.get_url()
+        print(url)
+        self.website = url
 
     def check_website(self, dt):
         """
