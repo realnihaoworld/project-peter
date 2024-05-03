@@ -103,7 +103,7 @@ class ProductivityPalApp(App):
         note -- dt is a required input to schedule but it is not used
         """
         current_time = time()
-        if self.status == "ON":
+        if self.status == "ON" and self.website != None:
             if (self.website in WebBox.good_web):
                 # If on a productive website
 
