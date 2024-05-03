@@ -92,8 +92,9 @@ class ProductivityPalApp(App):
         ctx = server.app.test_request_context('/', method='POST')
         ctx.push()
         url = server.get_url()
-        print(url)
+        print(f"Current Url: {url}")
         self.website = url
+        print(f"self.website: {self.website}")
 
     def check_website(self, dt):
         """
