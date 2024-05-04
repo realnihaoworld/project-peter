@@ -221,6 +221,17 @@
         text_size: self.size
         color: colormap["darkred"]
 
+    Label:
+        text: "Current Website:" app.website
+        pos: root.size[0] * 5 / 100, root.size[1] * 90 / 100
+        size: root.size[0] * 30 / 100, root.size[1] * 10 / 100
+        font_size: root.size[0] / 43
+        font_name: "montserrat"
+
+        valign: "bottom"
+        halign: "left"
+        text_size: self.size
+        color: "black"
 
 <StatusBox>
     Label:
