@@ -11,7 +11,10 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async tabs => {
             "Content-Type": "application/json",
             "Accept": "application/json"
         },
-        body: JSON.stringify({"url": domain})});
+        body: JSON.stringify({
+        "url": domain,
+        })
+        });
     
     const url_post = await response.json();
     console.log(url_post);
