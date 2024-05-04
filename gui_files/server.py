@@ -33,7 +33,7 @@ def send_url():
         return url_string
 # strips the url to get the domain name only
 def url_cleaner(link):
-    url = link.replace('url', '').replace('"', '').replace('}', '').replace('{','').replace(':', '')
+    url = link.replace('url', '').replace('"', '').replace('}', '').replace('{','').replace(':', '').replace('www.', '')
     return url
     
 if __name__ == "__main__":

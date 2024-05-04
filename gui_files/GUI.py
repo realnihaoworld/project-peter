@@ -85,10 +85,11 @@ class ProductivityPalApp(App):
 
     def get_website(self, dt):
         """
-        danison -- ive added this here so itll schedule to run every second or so. if you could have it set
-        self.website to a string w/ the domain. i mean if you have to do it another way i get it but thats what
-        its currently self up to work with.
+        Calls a function from the flask server that retrieves the current url the user is on
+        
+        note -- dt is a required input to schedule but it is not used
         """
+        # use a get request to grab the url being tracked by the server
         url = requests.get('http://127.0.0.1:5000/get')
         
         self.website = url.text
