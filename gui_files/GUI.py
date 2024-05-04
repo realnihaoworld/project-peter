@@ -90,6 +90,7 @@ class ProductivityPalApp(App):
         its currently self up to work with.
         """
         url = requests.get('http://127.0.0.1:5000/get')
+        
         self.website = url.text
         print(f"self.website: {self.website}")
 

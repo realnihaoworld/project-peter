@@ -18,9 +18,9 @@ def get_url():
         global url_string
         resp_json = request.get_data()
         url = resp_json.decode()
-        url_string = url
+        url_string = url_cleaner(url)
         print(url_string)
-        return json.dumps(url)
+        return url_string
 
 # Allows kivy gui to make a get request to this function to get the url
 @app.route('/get', methods=['GET'])
@@ -28,8 +28,13 @@ def get_url():
 def send_url():
     if request.method == 'GET':
         global url_string
+        clean_url = url_string.strip()
         print(f'get request: {url_string}')
         return url_string
-
+# strips the url to get the domain name only
+def url_cleaner(link):
+    url = link.replace('url', '').replace('"', '').replace('}', '').replace('{','').replace(':', '')
+    return url
+    
 if __name__ == "__main__":
     app.run()
