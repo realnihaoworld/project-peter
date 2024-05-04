@@ -30,10 +30,15 @@ def send_url():
         global url_string
         clean_url = url_string.strip()
         print(f'get request: {url_string}')
-        return url_string
+        return clean_url
+
 # strips the url to get the domain name only
 def url_cleaner(link):
-    url = link.replace('url', '').replace('"', '').replace('}', '').replace('{','').replace(':', '').replace('www.', '')
+    char_list = ['url', '"', '{', '}', ':', 'www.']
+    
+    url = link
+    for char in char_list:
+        url = url.replace(char, '')
     return url
     
 if __name__ == "__main__":

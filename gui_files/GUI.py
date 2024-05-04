@@ -36,7 +36,7 @@ class ProductivityPalApp(App):
     def build(self):
 
         # website
-        self.website = "tiktok.com" # PLACEHOLDER FOR TESTING
+        self.website = " " # PLACEHOLDER FOR TESTING
 
         # path to sound. THESE DONT WORK RIGHT NOW
         self.good_sound = os.path.join('sounds','positive_reaction_audio.wav')
