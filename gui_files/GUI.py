@@ -89,11 +89,8 @@ class ProductivityPalApp(App):
         self.website to a string w/ the domain. i mean if you have to do it another way i get it but thats what
         its currently self up to work with.
         """
-        ctx = server.app.test_request_context('/', method='POST')
-        ctx.push()
-        url = server.get_url()
-        print(f"Current Url: {url}")
-        self.website = url
+        url = requests.get('http://127.0.0.1:5000/get')
+        self.website = url.text
         print(f"self.website: {self.website}")
 
     def check_website(self, dt):
@@ -104,7 +101,7 @@ class ProductivityPalApp(App):
         note -- dt is a required input to schedule but it is not used
         """
         current_time = time()
-        if self.status == "ON" and self.website != None:
+        if self.status == "ON" and type(self.website) == str:
             if (self.website in WebBox.good_web):
                 # If on a productive website
 
