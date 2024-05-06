@@ -162,7 +162,7 @@ class ProductivityPalApp(App):
     # sets delay input
     def set_good_delay(self, delay_time):
         try:
-            if 0.0 < float(delay_time) <= 60.0:
+            if 0.0 < float(delay_time) <= 10:
                 self.good_delay = float(delay_time)
             else:
                 raise ValueError
