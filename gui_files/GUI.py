@@ -36,7 +36,7 @@ class ProductivityPalApp(App):
     def build(self):
 
         # website
-        self.website = "tiktok.com" # PLACEHOLDER FOR TESTING
+        self.website = " " # PLACEHOLDER FOR TESTING
 
         # path to sound. THESE DONT WORK RIGHT NOW
         self.good_sound = os.path.join('sounds','positive_reaction_audio.wav')
@@ -85,11 +85,15 @@ class ProductivityPalApp(App):
 
     def get_website(self, dt):
         """
-        danison -- ive added this here so itll schedule to run every second or so. if you could have it set
-        self.website to a string w/ the domain. i mean if you have to do it another way i get it but thats what
-        its currently self up to work with.
+        Calls a function from the flask server that retrieves the current url the user is on
+        
+        note -- dt is a required input to schedule but it is not used
         """
-        pass
+        # use a get request to grab the url being tracked by the server
+        url = requests.get('http://127.0.0.1:5000/get')
+        
+        self.website = url.text
+        print(f"self.website: {self.website}")
 
     def check_website(self, dt):
         """
@@ -99,7 +103,7 @@ class ProductivityPalApp(App):
         note -- dt is a required input to schedule but it is not used
         """
         current_time = time()
-        if self.status == "ON":
+        if self.status == "ON" and type(self.website) == str:
             if (self.website in WebBox.good_web):
                 # If on a productive website
 
@@ -158,7 +162,7 @@ class ProductivityPalApp(App):
     # sets delay input
     def set_good_delay(self, delay_time):
         try:
-            if 0.0 < float(delay_time) <= 60.0:
+            if 0.0 < float(delay_time) <= 10:
                 self.good_delay = float(delay_time)
             else:
                 raise ValueError

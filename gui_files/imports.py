@@ -29,3 +29,7 @@ from playsound import *
 
 # for opening files
 from tkinter.filedialog import askopenfilename
+
+# for getting the website url
+import server
+import requests
