@@ -30,3 +30,6 @@ pip install -r requirements.txt - install every requirement
 # To run flask server
 cd into server folder
 flask --app server run
+
+24.05.09
+Yay we finished
